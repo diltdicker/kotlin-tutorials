@@ -1,0 +1,39 @@
+
+buildscript {
+
+    ext.kotlin_version = '1.3.72'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'tutorial.MainKt'
+        )
+    }
+}
